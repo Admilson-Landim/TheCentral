@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title> The Central </title>
+  <title> Central | Login </title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -14,15 +14,24 @@
 </head>
 <body>
 
-<div class="jumbotron text-center">
-  
-</div>
-  
+  <main class="login">
+    <div class="login_container">
+      <h1 class="login_title">  Central    </h1>
+      <form action="" class="login_form">
+        <input type="email" class="login_input" placeholder="email" name="email">
+        <span class="login_input-border"></span>
+        <input type="password" class="login_input" placeholder="senha" name="senha">
+        <span class="login_input-border"></span>
 
-
+        <button class="login_submit"> Login </button>
+        <a href="#" class="login_reset">Esqueceu a senha ?!?</a>
+      </form>
+    </div>
+  </main>
+  
 
 </body>
 
-<script src="{% static "js/script.js" %}"></script>
+<script defer src="{% static "js/script.js" %}"></script>
 
 </html>

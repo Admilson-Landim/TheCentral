@@ -1,10 +1,108 @@
-
-.jumbotron {
-    background-color: #61cc86;
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
 }
 
-
-.central {
-    text-align: center;
+.login {
+    height: 100vh;
+    background: linear-gradient(120deg, #9f8e2e, #193839);
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
+
+.login_container {
+    min-height: 400px;
+    width: 300px;
+    background-color: #fff;
+    box-sizing: border-box;
+    padding: 32px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login_title {
+    margin-bottom: 32px;
+    color: #303030;
+}
+
+
+.login_form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login_input {
+    height: 48px;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 8px;
+    border: unset;
+    outline: none;
+}
+
+.login_input-border{
+    height: 1px;
+    width: 100%;
+    margin-bottom: 16px;
+    background-color: #cfcfcf;
+    transition: .03s ease-in-out;
+    -webkit-transition: .03s ease-in-out;
+    -moz-transition: .03s ease-in-out;
+    -ms-transition: .03s ease-in-out;
+    -o-transition: .03s ease-in-out;
+}
+
+.login_input-border::after{
+    content: '';
+    display: block;
+    height: 1px;
+    width: 0;
+    margin-bottom: 16px;
+    background: linear-gradient(120deg, #9f8e2e, #12e3ea);
+    transition: .03s ease-in-out;
+}
+
+.login_input:focus + .login_input-border::after {
+    width: 100%;   
+}
+
+
+.login_input:hover {
+    background-position: right;
+}
+
+
+.login_submit {
+    height: 40px;
+    width: 100%;
+    outline: none;
+    background:  linear-gradient(120deg, #9f8e2e, #12e3ea, #e2c72c);
+    background-size: 200%;
+    margin-bottom: 32px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    border: unset;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: .5s ease-in-out;
+}
+
+.login_reset{
+    font-size: 12px;
+    color: #929292;
+    text-decoration: none;
+}
+
