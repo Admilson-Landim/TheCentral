@@ -1,9 +1,9 @@
 
 from dataclasses import Field
 from rest_framework import serializers
-from central.models import  AlunoTest
+from central.models import  JogadorTest
 
-class AlunoSerializer(serializers.ModelSerializer):
+class JogadorSerializer(serializers.ModelSerializer):
     class Meta:
-        model = AlunoTest
-        fields = ['id', 'name', 'phone', 'code']
+        model = JogadorTest
+        fields = ['id', 'name', 'phone', 'code', 'equipa']

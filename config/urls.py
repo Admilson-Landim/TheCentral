@@ -16,18 +16,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from central.views import AlunoViewSet
+from central.views import JogadorViewSet
 from rest_framework import routers
 
 from config import settings
 from django.conf.urls.static import static
 
 router = routers.DefaultRouter()
-router.register(r'alunos', AlunoViewSet)
+router.register(r'jogador', JogadorViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('aluno/list', include(router.urls)),
+    path('jogador/lista', include(router.urls)),
     path('', include('central.urls')),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
