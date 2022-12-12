@@ -10,4 +10,6 @@ from . import views
 urlpatterns = [
     path('', views.pageIndex, name="home"),
     path('cadastro/', views.pageCadastro, name="cadastro"),
+    path('logout/', views.pageLogout, name="logout"),
+    path('cadastroAdd/', views.pageCadastroAdd, name="cadastroAdd"),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

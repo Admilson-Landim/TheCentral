@@ -29,7 +29,7 @@ router.register(r'user', UtilizadorViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     #path('jogador/', include(router.urls)),
-    path('user/', include(router.urls)),
+    path('api/', include(router.urls)),
     path('', include('central.urls')),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

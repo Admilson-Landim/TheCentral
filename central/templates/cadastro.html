@@ -14,23 +14,24 @@
 </head>
 <body>
 
-  <main class="login">
+  <main class="login"> 
     <div class="login_container">
       <h1 class="login_title">  Cadastro  </h1>
-      <form action="" class="login_form">
+      <form action="/cadastroAdd/" class="login_form" method="POST">
+        {% csrf_token %}  
         <input type="email" class="login_input" placeholder="Email" name="email">
         <span class="login_input-border"></span>
 
-        <input type="text" class="login_input" placeholder="Username" name="username">
+        <input type="text" class="login_input" placeholder="Username" name="name">
         <span class="login_input-border"></span>
 
-        <input type="number" class="login_input" placeholder="Telefone" name="telefone">
+        <input type="number" class="login_input" placeholder="Telefone" name="phone">
         <span class="login_input-border"></span>
         
         <input type="password" class="login_input" placeholder="Senha" name="senha">
         <span class="login_input-border"></span>
 
-        <input type="password" class="login_input" placeholder="Confirmar senha" name="confirmar_senha">
+        <input type="password" class="login_input" placeholder="Confirmar senha" name="csenha">
         <span class="login_input-border"></span>
 
         <button class="login_submit"> Cadastrar </button>
