@@ -16,3 +16,7 @@ class JogadorViewSet(viewsets.ModelViewSet):
 def pageIndex(request):
     return render(request, "index.html")
 
+# pagina incial - rendariing index page
+def pageCadastro(request):
+    return render(request, "cadastro.html")
+
