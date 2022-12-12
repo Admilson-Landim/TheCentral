@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from central.views import JogadorViewSet
+from central.views import JogadorViewSet, UtilizadorViewSet
 from rest_framework import routers
 
 from config import settings
@@ -24,10 +24,12 @@ from django.conf.urls.static import static
 
 router = routers.DefaultRouter()
 router.register(r'jogador', JogadorViewSet)
+router.register(r'user', UtilizadorViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('jogador/lista', include(router.urls)),
+    path('jogador/', include(router.urls)),
+    path('user/', include(router.urls)),
     path('', include('central.urls')),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
