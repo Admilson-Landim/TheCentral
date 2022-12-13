@@ -1,0 +1,49 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title> Central | Home </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <link href="{% static "css/estilo.css" %}" rel="stylesheet">
+</head>
+<body>
+
+
+  {% for message in messages %}
+  <div class="alert alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+    <strong>Mensagem: </strong> {{ message }}
+    <button type="button" class="close" data-dismissible="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {% endfor %}
+
+  <main class="login">
+    <div class="login_container">
+      <h1 class="login_title">  HOME    </h1>
+      
+      
+      {% if user.is_authenticated %}
+      <h3 class="login_title">  Email   {{ email }}  </h3>
+      <h3 class="login_title">  User  {{ name }}   </h3>
+      <h4 class="login_title">  Logado com sucesso !!!  </h4>
+        
+      {% endif %}
+        
+
+    </div>
+  </main>
+  
+
+</body>
+
+<script defer src="{% static "js/script.js" %}"></script>
+
+</html>

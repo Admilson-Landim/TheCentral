@@ -14,13 +14,16 @@
 </head>
 <body>
 
+
+  
   <main class="login">
     <div class="login_container">
       <h1 class="login_title">  Central    </h1>
-      <form action="" class="login_form">
-        <input type="email" class="login_input" placeholder="Email" name="email">
+      <form action="/login/" class="login_form" method="POST">
+        {% csrf_token %}  
+        <input type="email" class="login_input" placeholder="Email" name="email" id="email">
         <span class="login_input-border"></span>
-        <input type="password" class="login_input" placeholder="Senha" name="senha">
+        <input type="password" class="login_input" placeholder="Senha" name="senha" id="senha">
         <span class="login_input-border"></span>
 
         <button class="login_submit"> Login </button>
