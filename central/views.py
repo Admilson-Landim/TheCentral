@@ -76,13 +76,13 @@ def pageLogin(request):
         senhas = request.POST.get('')
 
         user = authenticate(request, email=emails, senha=senhas)
-        user01 = login(request, user)
+        #user01 = login(request, user)
 
         print("»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»» email00: ", emails)
         print("»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»» senha00: ", senhas)
         #print("»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»» Utilizador00: ", Utilizador)
         print("»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»» User00: ", user)
-        print("»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»» User01: ", user01)
+        #print("»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»» User01: ", user01)
 
         if user is not None:
             print("»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»» senha: ", senhas)
