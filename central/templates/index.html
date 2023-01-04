@@ -21,12 +21,12 @@
       <h1 class="login_title">  Central    </h1>
       <form action="/login/" class="login_form" method="POST">
         {% csrf_token %}  
-        <input type="email" class="login_input" placeholder="Email" name="email" id="email">
+        <input type="text" class="login_input" placeholder="Email" name="email" id="email">
         <span class="login_input-border"></span>
         <input type="password" class="login_input" placeholder="Senha" name="senha" id="senha">
         <span class="login_input-border"></span>
 
-        <button class="login_submit"> Login </button>
+        <button type="submit" class="login_submit"> Login </button>
         <a href="#" class="login_reset"> Esqueceu a senha ?!? </a> 
         <a href="{% url 'cadastro' %}" class="login_reset criar"> Criar Conta </a>
       </form>

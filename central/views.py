@@ -1,6 +1,7 @@
 
-import mysql.connector
+
 from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
 
 from django.http import HttpResponse
 from rest_framework import  viewsets
@@ -8,7 +9,8 @@ from central.models import JogadorTest, Utilizador
 from central.serializer import  JogadorSerializer, UtilizadorSerializer
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+
+
 
 
 
@@ -72,30 +74,28 @@ def pageLogout(request):
 def pageLogin(request):
 
     if request.method == "POST":
-        emails = request.POST.get('')
-        senhas = request.POST.get('')
+        usernameD = request.POST.get('email')
+        passwordD = request.POST.get('senha')
 
-        user = authenticate(request, email=emails, senha=senhas)
-        #user01 = login(request, user)
+        try:
+            #user = User.objects.get(username=username)
+            user = authenticate(request, username=usernameD, password=passwordD)
 
-        print("»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»» email00: ", emails)
-        print("»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»» senha00: ", senhas)
-        #print("»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»» Utilizador00: ", Utilizador)
-        print("»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»» User00: ", user)
-        #print("»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»» User01: ", user01)
+            if user is not None:
+                login(request, user)
+                name = user.get_username
+                username = user.email
+                
+                return render(request, "main.html", {'email': username, 'name': name})
 
-        if user is not None:
-            print("»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»» senha: ", senhas)
-            login(request, user)
-            name = user.name
-            print("»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»» name: ", name)
-            return render(request, "main.html", {'email': emails, 'name': name})
+            else:
+                print("»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»» Not !!! Login Failed")
+                messages.error(request, "Credencial errado !!!")
+                return redirect('home')
 
-        else:
-            print("»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»» Not !!! Login Failed")
-            messages.error(request, "Credencial errado !!!")
-            return redirect('home')
-
+        except User.DoesNotExist:
+            print("»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»» DoesNotExist: ", )
+        
     return render(request, "index.html")
 
 

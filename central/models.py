@@ -22,3 +22,5 @@ class Utilizador(models.Model):
 
     def __str__(self):
         return self.name 
+
+    #empAuth_objects = models.Manager()
