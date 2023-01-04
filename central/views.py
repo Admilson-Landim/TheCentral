@@ -46,6 +46,25 @@ def pageCadastroAdd(request):
         return redirect('home')
     # End pageCadastroAdd
 
+# pagina incial - rendariing index page
+def pageCadastroModelUser(request):
+
+    if request.method == "POST":
+        names = request.POST.get('name')
+        phones = request.POST.get('phone')
+        emails = request.POST.get('email')
+        senha = request.POST.get('senha')
+        csenha = request.POST.get('csenha')
+
+        
+        novoUser = Utilizador.objects.create(name=names, phone=phones, email=emails, senha=senha)
+        novoUser.save()
+
+        messages.success(request, "Conta criado com sucesso !!!")
+        return redirect('home')
+
+    return render(request, "cadastro.html")
+
 
 # pagina incial - rendariing index page
 def pageCadastro(request):
@@ -55,14 +74,27 @@ def pageCadastro(request):
         phones = request.POST.get('phone')
         emails = request.POST.get('email')
         senha = request.POST.get('senha')
-        #csenha = request.POST.get('csenha')
+        csenha = request.POST.get('csenha')
 
-        #try com model User.... 29:50
-        novoUser = Utilizador.objects.create(name=names, phone=phones, email=emails, senha=senha)
-        novoUser.save()
+        if senha == csenha:
+            print(":::::::::::::::::::::::::::::::: Same Passs")
 
-        messages.success(request, "Conta criado com sucesso !!!")
-        return redirect('home')
+            try:
+                novoUser = User.objects.create_user(names, emails, senha)
+                novoUser.first_name = names
+                novoUser.last_name = phones
+
+                novoUser.save()
+                messages.success(request, "Conta criado com sucesso !!!")
+                return redirect('home')
+            except Exception as e:
+                print("»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»::::", e)
+                messages.error(request, "Erro: ", e)
+                #messages.success(request, "Conta criado com sucesso !!!")
+                #return redirect('home')
+        else:
+            print(":::::::::::::::::::::::::::::::: Diferent Pass")   
+            messages.error(request, "Senhas Diferentes !!!")
 
     return render(request, "cadastro.html")
 
