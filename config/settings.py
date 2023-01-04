@@ -85,6 +85,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+""" Ligar Com DB do Docker ================================================
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -93,6 +94,21 @@ DATABASES = {
         'PASSWORD': 'central',
         'HOST': '127.0.0.1',
         'PORT': '3307',
+        'OPTIONS': {
+            'init_command': 'Set sql_mode= "STRICT_TRANS_TABLES"'
+        }
+    }
+}
+=========================================================================="""
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'Central',
+        'USER': 'root',
+        'PASSWORD': '123456789',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
         'OPTIONS': {
             'init_command': 'Set sql_mode= "STRICT_TRANS_TABLES"'
         }
